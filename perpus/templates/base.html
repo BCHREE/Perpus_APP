@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIPUSTAKA - {% block title %}Perpustakaan{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+<link rel="stylesheet" href="{% static 'style.css' %}?v=1.1">
+</head>
+<body>
+
+    <div class="sidebar">
+        <div>
+            <div class="logo-section">
+                <div class="logo-box">P</div>
+                <div class="logo-text">
+                    <h3>Sipustaka</h3>
+                    <h2>Sistem Peminjaman Buku</h2>
+                </div>
+            </div>
+            <div class="menu-list">
+                <a href="{% url 'url_dashboard' %}" id="menu-dash">Dashboard</a>
+                <a href="{% url 'url_buku' %}" id="menu-buku">Buku</a>
+                <a href="{% url 'url_peminjaman' %}" id="menu-pinjam">Peminjaman</a>
+                <a href="{% url 'url_daftar' %}" id="menu-user">Daftar User</a>
+            </div>
+        </div>
+        <div class="admin-box">
+            <span>Admin Aktif</span>
+            <strong>Budi Siregar</strong>
+        </div>
+    </div>
+
+    <div class="main-content">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+</html>

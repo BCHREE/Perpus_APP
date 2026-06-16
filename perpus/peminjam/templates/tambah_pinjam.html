@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Tambah Peminjaman Baru{% endblock %}
+
+{% block content %}
+<div class="top-header">
+    <div>
+        <span>Transaksi Perpustakaan</span>
+        <h1>Form Tambah Pinjam Buku</h1>
+    </div>
+</div>
+
+<div class="card" style="max-width: 600px;">
+    <form method="POST">
+        {% csrf_token %}
+        
+        <div class="form-group" style="margin-bottom: 16px;">
+            <label style="display: block; margin-bottom: 6px; font-weight: 500;">Nama Peminjam (Siswa)</label>
+            <select name="nama_siswa" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; background: white;" required>
+                <option value="">-- Pilih Siswa --</option>
+                {% for user in semua_user %}
+    <option value="{{ user.nama }}">{{ user.nama }} ({{ user.kelas }})</option>
+{% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 16px;">
+            <label style="display: block; margin-bottom: 6px; font-weight: 500;">Buku yang Dipinjam</label>
+            <select name="judul_buku" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; background: white;" required>
+                <option value="">-- Pilih Buku --</option>
+                {% for buku in semua_buku %}
+                    <option value="{{ buku.judul }}">{{ buku.judul }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 16px;">
+            <label style="display: block; margin-bottom: 6px; font-weight: 500;">Tanggal Pinjam</label>
+            <input type="date" name="tanggal_pinjam" style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px;" required>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 24px;">
+            <label style="display: block; margin-bottom: 6px; font-weight: 500;">Tanggal Wajib Kembali</label>
+            <input type="date" name="tanggal_kembali" style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px;" required>
+        </div>
+
+        <div style="display: flex; gap: 12px; justify-content: flex-end;">
+            <a href="{% url 'url_peminjaman' %}" class="btn btn-secondary" style="text-decoration: none;">Batal</a>
+            <button type="submit" class="btn" style="background: #2563eb; color: white; border: none; cursor: pointer; padding: 10px 20px; border-radius: 6px; font-weight: 500;">Simpan Transaksi</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card" style="max-width: 500px;">
+    <h2>Edit Data Buku</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Judul Buku</label>
+        <input type="text" name="judul" value="{{ buku.judul }}" style="width:100%; padding:8px; margin-bottom:12px;" required>
+        <label>Pengarang</label>
+        <input type="text" name="pengarang" value="{{ buku.pengarang }}" style="width:100%; padding:8px; margin-bottom:12px;">
+        <label>Kategori</label>
+        <input type="text" name="kategori" value="{{ buku.kategori }}" style="width:100%; padding:8px; margin-bottom:12px;">
+        <label>Penerbit</label>
+        <input type="text" name="penerbit" value="{{ buku.penerbit }}" style="width:100%; padding:8px; margin-bottom:12px;">
+        <label>Tahun</label>
+        <input type="text" name="tahun" value="{{ buku.tahun }}" style="width:100%; padding:8px; margin-bottom:12px;">
+        <label>Rak</label>
+        <input type="text" name="rak" value="{{ buku.rak }}" style="width:100%; padding:8px; margin-bottom:12px;">
+        <label>Stok</label>
+        <input type="number" name="stok" value="{{ buku.stok }}" style="width:100%; padding:8px; margin-bottom:12px;">
+        <button type="submit" style="background:#2563eb; color:white; border:none; padding:10px 15px; border-radius:4px;">Simpan Perubahan</button>
+    </form>
+</div>
+{% endblock %}

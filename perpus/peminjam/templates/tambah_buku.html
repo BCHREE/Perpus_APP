@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Tambah Buku Baru{% endblock %}
+
+{% block content %}
+<div class="top-header">
+    <div>
+        <span>Koleksi Perpustakaan</span>
+        <h1>Tambah Buku Baru</h1>
+    </div>
+</div>
+
+<div class="card" style="max-width: 800px;">
+    <form method="POST">
+        {% csrf_token %}
+        
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Judul Buku</label>
+                <input type="text" name="judul" placeholder="Masukkan judul buku" required>
+            </div>
+            <div class="form-group">
+                <label>Pengarang</label>
+                <input type="text" name="pengarang" placeholder="Nama penulis/pengarang" required>
+            </div>
+            <div class="form-group">
+                <label>Kategori</label>
+                <select name="kategori">
+                    <option value="Novel">Novel</option>
+                    <option value="Sains / Kamus">Sains / Kamus</option>
+                    <option value="Sejarah">Sejarah</option>
+                    <option value="Komik">Komik</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Penerbit</label>
+                <input type="text" name="penerbit" placeholder="Nama penerbit buku" required>
+            </div>
+            <div class="form-group">
+                <label>Tahun Terbit</label>
+                <input type="number" name="tahun" placeholder="Contoh: 2026" required>
+            </div>
+            <div class="form-group">
+                <label>Lokasi Rak</label>
+                <input type="text" name="rak" placeholder="Contoh: Rak A-03" required>
+            </div>
+            <div class="form-group" style="grid-column: span 2;">
+                <label>Jumlah Stok (Eks)</label>
+                <input type="number" name="stok" placeholder="Contoh: 5" style="width: 50%;" required>
+            </div>
+        </div>
+        
+        <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 20px;">
+            <a href="{% url 'url_buku' %}" class="btn btn-secondary">Batal</a>
+            <button type="submit" class="btn" style="background: #2563eb; color: white; border: none; cursor: pointer; padding: 10px 20px; border-radius: 6px;">Simpan Buku</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

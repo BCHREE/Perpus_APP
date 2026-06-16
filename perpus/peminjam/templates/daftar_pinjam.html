@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Peminjaman{% endblock %}
+
+{% block content %}
+<script>document.getElementById('menu-pinjam').classList.add('active');</script>
+<div class="top-header">
+    <div>
+        <span>Catat peminjaman dan pengembalian buku.</span>
+        <h1>Peminjaman</h1>
+    </div>
+    <a href="{% url 'url_tambah_pinjam' %}" class="btn btn-primary">+ Pinjam Buku</a>
+</div>
+
+<div class="card">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nama Peminjam</th>
+                <th>Buku</th>
+                <th>Tanggal Pinjam</th>
+                <th>Jatuh Tempo</th>
+                <th>Status</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pinjam in semua_pinjaman %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ pinjam.nama_siswa }}</td>
+                <td><strong>{{ pinjam.judul_buku }}</strong></td>
+                <td>{{ pinjam.tanggal_pinjam }}</td>
+                <td>{{ pinjam.tanggal_kembali }}</td>
+                <td><span class="status-pinjam">{{ pinjam.status }}</span></td>
+                <td>
+                    <a href="#" class="btn" style="background: #059669; color: white; padding: 6px 14px; font-size: 13px; border-radius: 6px; text-decoration: none;">Kembalikan</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="7" style="text-align: center; color: #94a3b8; padding: 20px;">Belum ada data transaksi peminjaman.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

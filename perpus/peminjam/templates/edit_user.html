@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card" style="max-width: 500px;">
+    <h2>Edit Data Anggota</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Nama Lengkap</label>
+        <input type="text" name="nama" value="{{ user.nama }}" style="width:100%; padding:8px; margin-bottom:12px;" required>
+        <label>NIS</label>
+        <input type="text" name="nis" value="{{ user.nis }}" style="width:100%; padding:8px; margin-bottom:12px;">
+        <label>Kelas</label>
+        <input type="text" name="kelas" value="{{ user.kelas }}" style="width:100%; padding:8px; margin-bottom:12px;">
+        <label>No. Kontak</label>
+        <input type="text" name="kontak" value="{{ user.kontak }}" style="width:100%; padding:8px; margin-bottom:12px;">
+        <button type="submit" style="background:#2563eb; color:white; border:none; padding:10px 15px; border-radius:4px;">Simpan Perubahan</button>
+    </form>
+</div>
+{% endblock %}

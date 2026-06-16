@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Tambah User Baru{% endblock %}
+
+{% block content %}
+<div class="top-header">
+    <div>
+        <span>Manajemen Anggota</span>
+        <h1>Tambah User Baru</h1>
+    </div>
+</div>
+
+<div class="card" style="max-width: 600px;">
+    <form method="POST">
+        {% csrf_token %}
+        
+        <div class="form-group" style="margin-bottom: 16px;">
+            <label style="display: block; margin-bottom: 6px; font-weight: 500;">Nama Lengkap</label>
+            <input type="text" name="nama" placeholder="Masukkan nama lengkap siswa" style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px;" required>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 16px;">
+            <label style="display: block; margin-bottom: 6px; font-weight: 500;">NIS (Nomor Induk Siswa)</label>
+            <input type="number" name="nis" placeholder="Masukkan NIS" style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px;" required>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 16px;">
+            <label style="display: block; margin-bottom: 6px; font-weight: 500;">Kelas</label>
+            <input type="text" name="kelas" placeholder="Contoh: XI PPLG 1" style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px;" required>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 24px;">
+            <label style="display: block; margin-bottom: 6px; font-weight: 500;">No. WhatsApp / Kontak</label>
+            <input type="text" name="kontak" placeholder="Contoh: 0812345..." style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px;" required>
+        </div>
+
+        <div style="display: flex; gap: 12px; justify-content: flex-end;">
+            <a href="{% url 'url_daftar' %}" class="btn btn-secondary" style="text-decoration: none;">Batal</a>
+            <button type="submit" class="btn" style="background: #2563eb; color: white; border: none; cursor: pointer; padding: 10px 20px; border-radius: 6px; font-weight: 500;">Simpan User</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

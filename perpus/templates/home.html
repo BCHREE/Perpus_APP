@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard Perpustakaan{% endblock %}
+
+{% block content %}
+<div class="top-header">
+    <div>
+        <span>Selamat Datang Kembali, Admin!</span>
+        <h1>Dashboard Analitik</h1>
+    </div>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <h3>Total Judul Buku</h3>
+        <div class="stat-number">{{ total_judul }}</div>
+        <span class="stat-desc">Judul buku terdaftar</span>
+    </div>
+    
+    <div class="stat-card">
+        <h3>Total Stok Buku</h3>
+        <div class="stat-number">{{ total_buku }} Eks</div>
+        <span class="stat-desc">Total fisik buku di rak</span>
+    </div>
+    
+    <div class="stat-card">
+        <h3>Sedang Dipinjam</h3>
+        <div class="stat-number" style="color: #ea580c;">{{ sedang_dipinjam }}</div>
+        <span class="stat-desc">Buku belum dikembalikan</span>
+    </div>
+    
+    <div class="stat-card">
+        <h3>Total Anggota</h3>
+        <div class="stat-number" style="color: #16a34a;">{{ total_user }}</div>
+        <span class="stat-desc">Siswa yang terdaftar</span>
+    </div>
+</div>
+
+<h2 style="margin-top: 32px; margin-bottom: 16px;">Monitoring Buku Master</h2>
+<div class="card">
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Judul Buku</th>
+                <th>Status Ketersediaan</th>
+            </tr>
+        </thead>
+<tbody>
+            {% for buku in semua_buku_dashboard %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><strong>{{ buku.judul }}</strong></td>
+                <td>
+                    {% if buku.sisa_stok <= 0 %}
+                        <span class="badge" style="background: #fee2e2; color: #dc2626; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 500;">
+                            Habis (0 Eks)
+                        </span>
+                    {% else %}
+                        <span class="badge" style="background: #dcfce7; color: #16a34a; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 500;">
+                            Tersedia ({{ buku.sisa_stok }} Eks)
+                        </span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3" style="text-align: center; color: #94a3b8;">Belum ada data data buku master.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

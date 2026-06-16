@@ -1,0 +1,314 @@
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif; 
+}
+body { 
+    display: flex; 
+    background: #f4f6f9; 
+    min-height: 100vh; 
+    color: #1e293b; 
+}
+/* DASHBOARD GRID & CARDS (PERSIS MOCKUP) */
+/* --- KODE KOTAK-KOTAK DASHBOARD STATISTIK --- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.stat-card {
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e2e8f0;
+    transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+}
+
+.stat-card h3 {
+    font-size: 14px;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 12px 0;
+}
+
+.stat-number {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 6px 0;
+}
+
+.stat-desc {
+    font-size: 12px;
+    color: #94a3b8;
+    display: block;
+}
+.dash-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+.dash-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    position: relative;
+}
+.dash-card span {
+    font-size: 13px;
+    color: #64748b;
+    font-weight: 500;
+}
+.dash-card h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 12px 0 6px 0;
+}
+.dash-card p {
+    font-size: 12px;
+    color: #94a3b8;
+}
+.dash-card .icon-box {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 18px;
+}
+
+/* KONTEN GRAFIK BAWAH */
+.chart-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+.chart-card {
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+.chart-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+}
+.chart-card span {
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+/* PROGRESS BAR STOK & TRANSAKSI */
+.progress-group {
+    margin-top: 20px;
+}
+.progress-item {
+    margin-bottom: 16px;
+}
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 500;
+    color: #334155;
+    margin-bottom: 6px;
+}
+.progress-bar-bg {
+    background: #f1f5f9;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.progress-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+}
+/* Progress Bar Width yang Dikontrol via CSS Variable */
+.bar-laskar { width: var(--w-laskar, 0%); background: #2563eb; }
+.bar-bumi { width: var(--w-bumi, 0%); background: #2563eb; }
+.bar-menara { width: var(--w-menara, 0%); background: #2563eb; }
+.bar-dipinjam { width: var(--w-dipinjam, 0%); background: #ea580c; }
+.bar-kembali { width: var(--w-kembali, 0%); background: #10b981; }
+/* SIDEBAR STYLE (PERSIS FOTO DESAIN) */
+.sidebar { 
+    width: 260px; 
+    background: #090e1a; 
+    color: #fff; 
+    padding: 24px 16px; 
+    position: fixed; 
+    top: 0; 
+    bottom: 0; 
+    left: 0; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    box-shadow: 4px 0 10px rgba(0,0,0,0.1); 
+}
+.logo-section { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    margin-bottom: 40px; 
+    padding: 0 8px; 
+}
+.logo-box { 
+    background: #2563eb; 
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-weight: bold; 
+    font-size: 18px; 
+    color: white; 
+}
+.logo-text h3 { 
+    font-size: 10px; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    color: #64748b; 
+    font-weight: 600; 
+}
+.logo-text h2 { 
+    font-size: 15px; 
+    font-weight: 700; 
+    color: #f8fafc; 
+    margin-top: -2px;
+}
+
+.menu-list a { 
+    display: flex; 
+    align-items: center; 
+    gap: 14px; 
+    color: #94a3b8; 
+    padding: 12px 16px; 
+    text-decoration: none; 
+    border-radius: 8px; 
+    font-size: 14px; 
+    font-weight: 500; 
+    margin-bottom: 4px; 
+    transition: all 0.2s ease; 
+}
+.menu-list a i { 
+    font-size: 16px; 
+    width: 20px; 
+}
+.menu-list a:hover { 
+    background: rgba(255,255,255,0.03); 
+    color: #f8fafc; 
+}
+.menu-list a.active { 
+    background: #131c2e; 
+    color: #fff; 
+    font-weight: 600; 
+}
+
+.admin-box { 
+    background: #131c2e; 
+    padding: 16px; 
+    border-radius: 12px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 4px; 
+}
+.admin-box span { 
+    font-size: 11px; 
+    color: #64748b; 
+}
+.admin-box strong { 
+    font-size: 14px; 
+    color: #f8fafc; 
+}
+
+/* KONTEN UTAMA KANAN */
+.main-content { 
+    margin-left: 260px; 
+    padding: 40px; 
+    width: calc(100% - 260px); 
+}
+.top-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+    margin-bottom: 24px; 
+}
+.top-header span { 
+    font-size: 13px; 
+    color: #64748b; 
+}
+.top-header h1 { 
+    font-size: 24px; 
+    font-weight: 700; 
+    color: #0f172a; 
+    margin-top: 2px; 
+}
+
+/* CARD CONTAINER PUTIH */
+.card { 
+    background: white; 
+    padding: 32px; 
+    border-radius: 16px; 
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01); 
+}
+
+/* BUTTONS */
+.btn { 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 8px; 
+    padding: 10px 20px; 
+    border-radius: 8px; 
+    font-size: 14px; 
+    font-weight: 600; 
+    text-decoration: none; 
+    cursor: pointer; 
+    border: none; 
+    transition: 0.2s; 
+}
+.btn-primary { background: #2563eb; color: white; }
+.btn-primary:hover { background: #1d4ed8; }
+.btn-danger { background: #dc2626; color: white; }
+.btn-danger:hover { background: #b91c1c; }
+.btn-secondary { background: white; color: #475569; border: 1px solid #e2e8f0; }
+.btn-secondary:hover { background: #f8fafc; }
+
+/* AKSI TABEL (DETAIL, EDIT, HAPUS) */
+.btn-action { padding: 6px 14px; font-size: 13px; border-radius: 6px; font-weight: 500; text-decoration: none; display: inline-block; }
+.btn-act-detail { background: #f1f5f9; color: #475569; }
+.btn-act-edit { background: #2563eb; color: white; margin: 0 4px; }
+.btn-act-delete { background: #dc2626; color: white; }
+
+/* TABEL */
+table { width: 100%; border-collapse: collapse; text-align: left; }
+th { padding: 16px; border-bottom: 2px solid #f1f5f9; color: #64748b; font-size: 13px; font-weight: 600; }
+td { padding: 16px; border-bottom: 1px solid #f1f5f9; color: #334155; font-size: 14px; }
+.status-badge { background: #ecfdf5; color: #059669; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; display: inline-block; }
+.status-pinjam { background: #fff7ed; color: #ea580c; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; display: inline-block; }
+
+/* INPUT FORM GRID */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-group label { font-size: 13px; font-weight: 600; color: #475569; }
+.form-group input, .form-group select, .form-group textarea { padding: 12px 16px; border-radius: 10px; border: 1px solid #e2e8f0; font-size: 14px; background: #f8fafc; outline: none; width: 100%; }
+.form-group input:focus, .form-group select:focus { border-color: #2563eb; background: #fff; }
+
+/* DETAIL SCREEN GRID */
+.detail-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 24px; }
+.detail-box { background: #f8fafc; padding: 20px; border-radius: 12px; }
+.detail-box span { font-size: 11px; text-transform: uppercase; color: #94a3b8; font-weight: 600; }
+.detail-box h4 { font-size: 16px; color: #0f172a; margin-top: 6px; font-weight: 600; }
+
+

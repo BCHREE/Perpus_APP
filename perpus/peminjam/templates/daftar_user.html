@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Daftar User{% endblock %}
+
+{% block content %}
+<div class="top-header">
+    <div>
+        <span>Data siswa yang bisa meminjam buku.</span>
+        <h1>User</h1>
+    </div>
+    <a href="{% url 'url_tambah_user' %}" class="btn btn-primary">+ Tambah User</a>
+</div>
+
+<div class="card">
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 60px;">ID</th>
+                <th>Nama</th>
+                <th>Kelas</th>
+                <th>NIS</th>
+                <th>Status</th>
+                <th style="text-align: center; width: 250px;">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in semua_user %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><strong>{{ user.nama }}</strong></td>
+                <td>{{ user.kelas }}</td>
+                <td>{{ user.nis }}</td>
+                <td><span class="status-badge">Aktif</span></td>
+                <td style="text-align: center;">
+                    <a href="/user/detail/?id={{ user.id }}" class="btn-action btn-act-detail">Detail</a>
+                    <a href="/user/edit/?id={{ user.id }}" class="btn-action btn-act-edit">Edit</a>
+                    <a href="/user/hapus/?id={{ user.id }}" class="btn-action btn-act-delete" onclick="return confirm('Yakin mau hapus {{ user.nama }}?')">Hapus</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" style="text-align: center; color: #94a3b8;">Data user kosong.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
