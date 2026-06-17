@@ -26,9 +26,7 @@ SECRET_KEY = 'django-insecure-_*5sheg_vnqy2koa*1)w0wh$5h$3sg-i0a4c!$s00hfo!tlbo&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['bchreeflow.pythonanywhere.com', '127.0.0.1', 'localhost']
-
-# Application definition
+ALLOWED_HOSTS = ['bchreeflow.pythonanywhere.com', '127.0.0.1', 'localhost']# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
