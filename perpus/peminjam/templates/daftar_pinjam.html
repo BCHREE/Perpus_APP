@@ -34,9 +34,25 @@
                 <td>{{ pinjam.tanggal_pinjam }}</td>
                 <td>{{ pinjam.tanggal_kembali }}</td>
                 <td><span class="status-pinjam">{{ pinjam.status }}</span></td>
-                <td>
-                    <a href="#" class="btn" style="background: #059669; color: white; padding: 6px 14px; font-size: 13px; border-radius: 6px; text-decoration: none;">Kembalikan</a>
-                </td>
+                <td style="display: flex; gap: 8px; align-items: center;">
+    {% if pinjam.status == 'Dipinjam' %}
+        <a href="/peminjaman/kembalikan/?id={{ pinjam.id }}" 
+           class="btn" 
+           style="background: #059669; color: white; padding: 6px 14px; font-size: 13px; border-radius: 6px; text-decoration: none; font-weight: 500;"
+           onclick="return confirm('Apakah siswa ini benar-benar ingin mengembalikan buku?')">
+           Kembalikan
+        </a>
+    {% else %}
+        <span style="color: #94a3b8; font-size: 13px; font-weight: 500; padding: 6px 0;">Selesai</span>
+    {% endif %}
+</td>
+<td>
+    {% if pinjam.status == 'Dipinjam' %}
+        <span class="status-pinjam">{{ pinjam.status }}</span>
+    {% else %}
+        <span class="status-badge">{{ pinjam.status }}</span>
+    {% endif %}
+</td>
             </tr>
             {% empty %}
             <tr>
@@ -46,4 +62,5 @@
         </tbody>
     </table>
 </div>
+
 {% endblock %}

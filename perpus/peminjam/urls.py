@@ -15,4 +15,5 @@ urlpatterns = [
     # Buku & Peminjaman
     path('buku/', views.daftar_buku, name='url_buku'),
     path('transaksi/', views.daftar_peminjaman, name='url_peminjaman'),
+    path('peminjaman/kembalikan/', views.halaman_kembalikan_buku, name='url_kembalikan_buku'),
 ] # <-- Pastikan tanda kurung siku ini ada dan tidak terhapus! 

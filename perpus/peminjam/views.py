@@ -196,3 +196,17 @@ def halaman_pinjam_buku(request):
         'semua_buku': DATA_BUKU,
     }
     return render(request, 'tambah_pinjam.html', context)
+
+def halaman_kembalikan_buku(request):
+    # Ambil ID peminjaman yang dikirim dari tombol HTML
+    pinjam_id = int(request.GET.get('id', 0))
+    
+    # Cari datanya di list DATA_PEMINJAMAN
+    for pinjam in DATA_PEMINJAMAN:
+        if pinjam['id'] == pinjam_id:
+            # Ubah statusnya jadi Dikembalikan
+            pinjam['status'] = 'Dikembalikan'
+            break
+            
+    # Kembalikan halaman ke daftar peminjaman
+    return redirect('/peminjaman/')
